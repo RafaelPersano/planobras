@@ -1,51 +1,50 @@
-
 import React, { useState, useMemo, useEffect } from 'react';
 import { Session } from '@supabase/supabase-js';
-import { supabase, isSupabaseConfigured } from './services/supabaseClient.ts';
-import * as db from './services/supabaseService.ts';
+import { supabase, isSupabaseConfigured } from './services/supabaseClient';
+import * as db from './services/supabaseService';
 import * as XLSX from 'xlsx';
 
-import Header from './components/Header.tsx';
-import Footer from './components/Footer.tsx';
-import Sidebar from './components/Sidebar.tsx';
-import InputSection from './components/InputSection.tsx';
-import PlanTable from './components/PlanTable.tsx';
-import BudgetSection from './components/BudgetSection.tsx';
-import MaterialDeliverySchedule from './components/MaterialDeliverySchedule.tsx';
-import PaymentSchedule from './components/PaymentSchedule.tsx';
-import GanttChart from './components/GanttChart.tsx';
-import AbcCurve from './components/AbcCurve.tsx';
-import ProjectEvolutionChart from './components/ProjectEvolutionChart.tsx';
-import ProposalSection from './components/ProposalSection.tsx';
-import MarketingPage from './components/MarketingPage.tsx';
-import BdiCalculator from './components/BdiCalculator.tsx';
-import UnitCostCalculator from './components/UnitCostCalculator.tsx';
-import CostBreakdownCalculator from './components/CostBreakdownCalculator.tsx';
-import DownloadEngineeringPdfButton from './components/DownloadEngineeringPdfButton.tsx';
-import DownloadInvestorPdfButton from './components/DownloadInvestorPdfButton.tsx';
-import MarketingSection from './components/MarketingSection.tsx';
-import Login from './components/Login.tsx';
-import GenerationProgress from './components/GenerationProgress.tsx';
-import PricingModal from './components/PricingModal.tsx';
-import PricingSection from './components/PricingSection.tsx';
-import FinancialAnalysisSection from './components/FinancialAnalysisSection.tsx';
-import ProjectManager from './components/ProjectManager.tsx';
-import InvestmentMatrix from './components/InvestmentMatrix.tsx';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Sidebar from './components/Sidebar';
+import InputSection from './components/InputSection';
+import PlanTable from './components/PlanTable';
+import BudgetSection from './components/BudgetSection';
+import MaterialDeliverySchedule from './components/MaterialDeliverySchedule';
+import PaymentSchedule from './components/PaymentSchedule';
+import GanttChart from './components/GanttChart';
+import AbcCurve from './components/AbcCurve';
+import ProjectEvolutionChart from './components/ProjectEvolutionChart';
+import ProposalSection from './components/ProposalSection';
+import MarketingPage from './components/MarketingPage';
+import BdiCalculator from './components/BdiCalculator';
+import UnitCostCalculator from './components/UnitCostCalculator';
+import CostBreakdownCalculator from './components/CostBreakdownCalculator';
+import DownloadEngineeringPdfButton from './components/DownloadEngineeringPdfButton';
+import DownloadInvestorPdfButton from './components/DownloadInvestorPdfButton';
+import MarketingSection from './components/MarketingSection';
+import Login from './components/Login';
+import GenerationProgress from './components/GenerationProgress';
+import PricingModal from './components/PricingModal';
+import PricingSection from './components/PricingSection';
+import FinancialAnalysisSection from './components/FinancialAnalysisSection';
+import ProjectManager from './components/ProjectManager';
+import InvestmentMatrix from './components/InvestmentMatrix';
 // FIX: Changed import from TaxAnalysisCivil to TaxSection and updated file path.
-import TaxSection from './components/TaxSection.tsx';
-import AdminPanel from './components/AdminPanel.tsx';
-import ConfigurationErrorModal from './components/ConfigurationErrorModal.tsx';
-import Spreadsheet from './components/Spreadsheet.tsx';
-import ExcelGenerator from './components/ExcelGenerator.tsx';
+import TaxSection from './components/TaxSection';
+import AdminPanel from './components/AdminPanel';
+import ConfigurationErrorModal from './components/ConfigurationErrorModal';
+import Spreadsheet from './components/Spreadsheet';
+import ExcelGenerator from './components/ExcelGenerator';
 
 
-import { generateFullProjectReport, generateProjectImages } from './services/geminiService.ts';
-import type { ConstructionPlan, MarketingMaterials, ConstructionTask, Tab } from './types.ts';
+import { generateFullProjectReport, generateProjectImages } from './services/geminiService';
+import type { ConstructionPlan, MarketingMaterials, ConstructionTask, Tab } from './types';
 
-import { SpreadsheetIcon } from './components/icons/SpreadsheetIcon.tsx';
-import { CogIcon } from './components/icons/CogIcon.tsx';
-import { DollarSignIcon } from './components/icons/DollarSignIcon.tsx';
-import { WandIcon } from './components/icons/WandIcon.tsx';
+import { SpreadsheetIcon } from './components/icons/SpreadsheetIcon';
+import { CogIcon } from './components/icons/CogIcon';
+import { DollarSignIcon } from './components/icons/DollarSignIcon';
+import { WandIcon } from './components/icons/WandIcon';
 
 
 interface StampData {
